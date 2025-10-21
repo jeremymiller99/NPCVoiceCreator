@@ -80,7 +80,7 @@ audioFileInput.addEventListener('change', async (e) => {
 randomizeBtn.addEventListener('click', () => {
     // Generate random values within each slider's range
     const randomPitch = (Math.random() * 2.0 + 1.0).toFixed(1); // 1.0 to 3.0
-    const randomSpeed = (Math.random() * 1.5 + 1.0).toFixed(1); // 1.0 to 2.5
+    const randomSpeed = (Math.random() * 2.0 + 0.5).toFixed(1); // 0.5 to 2.5
     const randomChoppiness = (Math.random() * 0.14 + 0.01).toFixed(2); // 0.01 to 0.15
     const randomPitchVar = (Math.random() * 0.5).toFixed(2); // 0.0 to 0.5
     
@@ -108,7 +108,7 @@ resetBtn.addEventListener('click', () => {
     pitchVariationValueDisplay.textContent = '0.15';
 });
 
-// Convert audio to Animalese
+// Convert audio to NPC voice
 convertBtn.addEventListener('click', async () => {
     if (!audioBuffer) return;
     
@@ -124,7 +124,7 @@ convertBtn.addEventListener('click', async () => {
         const pitchVariation = parseFloat(pitchVariationInput.value);
         
         // Process audio
-        const convertedBuffer = await processToAnimalese(
+        const convertedBuffer = await processToNPCVoice(
             audioBuffer,
             pitchShift,
             speedMultiplier,
@@ -156,8 +156,8 @@ convertBtn.addEventListener('click', async () => {
     }
 });
 
-// Process audio to Animalese style
-async function processToAnimalese(buffer, basePitchShift, speedMultiplier, choppiness, pitchVariation) {
+// Process audio to NPC voice style
+async function processToNPCVoice(buffer, basePitchShift, speedMultiplier, choppiness, pitchVariation) {
     const sampleRate = buffer.sampleRate;
     const numberOfChannels = buffer.numberOfChannels;
     

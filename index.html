@@ -10,7 +10,7 @@
     <div class="container">
         <header>
             <h1>NPC Voice Creator</h1>
-            <p>Transform your voice into Animal Crossing style NPC speech!</p>
+            <p>Transform your voice into stylized NPC character speech!</p>
         </header>
 
         <div class="card">
@@ -37,7 +37,7 @@
                     <span class="value-display" id="pitchValue">1.8</span>
                 </label>
                 <input type="range" id="pitchShift" min="1.0" max="3.0" step="0.1" value="1.8">
-                <small>Higher = more high-pitched and cute</small>
+                <small>Controls voice pitch (1.0 = low/deep, 3.0 = high/squeaky)</small>
             </div>
 
             <div class="control-group">
@@ -45,8 +45,8 @@
                     <span class="label-text">Speed</span>
                     <span class="value-display" id="speedValue">1.4</span>
                 </label>
-                <input type="range" id="speedMultiplier" min="1.0" max="2.5" step="0.1" value="1.4">
-                <small>Higher = faster speech</small>
+                <input type="range" id="speedMultiplier" min="0.5" max="2.5" step="0.1" value="1.4">
+                <small>Controls speech speed (0.5 = very slow, 2.5 = very fast)</small>
             </div>
 
             <div class="control-group">
@@ -69,7 +69,7 @@
 
             <div class="button-group">
                 <button id="convertBtn" class="btn btn-primary">
-                    <span>Convert to Animalese</span>
+                    <span>Convert to NPC Voice</span>
                 </button>
                 <button id="randomizeBtn" class="btn btn-accent">
                     <span>Randomize Settings</span>
@@ -95,7 +95,7 @@
 
         <div class="info-card">
             <h3>How it Works</h3>
-            <p class="description">This tool uses audio processing techniques to recreate the distinctive "Animalese" speech pattern from Animal Crossing games. The conversion process involves several key steps:</p>
+            <p class="description">This tool uses audio processing techniques to create stylized NPC character speech. The conversion process involves several key steps:</p>
             
             <div class="process-steps">
                 <div class="step">
@@ -115,7 +115,7 @@
                 
                 <div class="step">
                     <h4>4. Reassembly</h4>
-                    <p>The processed segments are reconnected with small gaps between them, creating the distinctive choppy, staccato effect that makes Animalese instantly recognizable.</p>
+                    <p>The processed segments are reconnected with small gaps between them, creating the distinctive choppy, staccato effect characteristic of NPC speech.</p>
                 </div>
             </div>
         </div>

@@ -1,19 +1,19 @@
 # NPC Voice Creator
 
-Transform your voice recordings into Animal Crossing style NPC speech (Animalese)!
+Transform your voice recordings into stylized NPC character speech!
 
 ## Features
 
 - **Easy File Upload**: Drag and drop or click to select audio files
 - **Real-time Preview**: Listen to your original audio before conversion
-- **Customizable Parameters**: 
-  - **Pitch Shift**: Adjust how high-pitched the voice sounds (1.0 - 3.0)
-  - **Speed**: Control how fast the speech plays (1.0 - 2.5)
-  - **Segment Length**: Size of each audio chunk in seconds (0.01 - 0.15, lower = choppier)
-  - **Pitch Variation**: Random pitch changes between segments (0.0 - 0.5)
-- **Randomize Settings**: Instantly generate random parameter combinations
-- **Download Converted Audio**: Export your Animalese audio as a WAV file
-- **Beautiful UI**: Modern, responsive design with smooth animations
+- **Adjustable Parameters**: Fine-tune all settings
+  - **Pitch Shift**: From deep (1.0) to squeaky (3.0)
+  - **Speed**: Control speech rate (0.5 - 2.5)
+  - **Segment Length**: Chunk size (0.01 - 0.15s)
+  - **Pitch Variation**: Random pitch changes (0.0 - 0.5)
+- **Randomize Settings**: Generate random combinations
+- **Download**: Export as WAV file
+- **Professional UI**: Modern grey and orange design
 
 ## How to Use
 
@@ -27,18 +27,14 @@ Transform your voice recordings into Animal Crossing style NPC speech (Animalese
    - Your original audio will appear for preview
 
 3. **Adjust Parameters**
-   - Use the sliders to fine-tune the Animalese effect
-   - **Recommended starting values:**
-     - Pitch Shift: 1.8
-     - Speed: 1.4
-     - Segment Length: 0.05
-     - Pitch Variation: 0.15
+   - Use the sliders to fine-tune the NPC voice effect
+   - Experiment with different combinations
+   - Try the Randomize button for random settings
 
 4. **Convert**
-   - Click "Convert to Animalese" button
+   - Click "Convert to NPC Voice" button
    - Wait for processing to complete
    - Listen to your converted audio!
-   - Try "Randomize Settings" to experiment with different voices!
 
 5. **Download**
    - Click "Download NPC Voice" to save the file
@@ -48,8 +44,11 @@ Transform your voice recordings into Animal Crossing style NPC speech (Animalese
 
 - **Clear Speech**: Use recordings with clear, distinct speech
 - **Minimal Background Noise**: Cleaner audio produces better results
-- **Experiment**: Try different parameter combinations!
-  - Higher pitch + faster speed = classic Animalese
+- **Experiment with Settings**: 
+  - Lower pitch (1.0-1.5) = deeper, more serious voices
+  - Higher pitch (2.0-3.0) = cute, playful voices
+  - Faster speed (2.0+) = makes speech unintelligible like NPC voice
+  - Slower speed (0.5-1.0) = more understandable but still stylized
   - Smaller segment length = more choppy/staccato effect
   - Higher pitch variation = more character personality
 
@@ -71,7 +70,7 @@ Transform your voice recordings into Animal Crossing style NPC speech (Animalese
 
 ## How It Works
 
-This tool uses advanced audio processing to recreate the distinctive "Animalese" speech pattern from Animal Crossing games. The conversion process involves several key steps:
+This tool uses advanced audio processing to create stylized NPC character speech. The conversion process involves several key steps:
 
 ### 1. Audio Segmentation
 Your audio is divided into small time-based segments (controlled by the Segment Length parameter). Each segment represents a single sound or syllable.
@@ -83,7 +82,7 @@ Each segment undergoes pitch modification to create the characteristic high-pitc
 Segments are sped up according to the Speed parameter, creating the rapid-fire speech pattern typical of NPC dialogue.
 
 ### 4. Reassembly
-The processed segments are reconnected with small gaps between them, creating the distinctive choppy, staccato effect that makes Animalese instantly recognizable.
+The processed segments are reconnected with small gaps between them, creating the distinctive choppy, staccato effect characteristic of NPC speech.
 
 ## Notes
 
