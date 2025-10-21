@@ -360,6 +360,129 @@ small {
     line-height: 1.7;
 }
 
+.preset-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #e8e8e8;
+}
+
+.preset-section h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.preset-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.preset-controls input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.preset-controls input[type="text"]:focus {
+    border-color: #ff8c42;
+}
+
+.btn-preset {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+    min-width: 150px;
+}
+
+.btn-preset:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+}
+
+.preset-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.preset-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+.preset-item:hover {
+    border-color: #ff8c42;
+    box-shadow: 0 2px 10px rgba(255, 140, 66, 0.2);
+}
+
+.preset-name {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1.05rem;
+}
+
+.preset-values {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.preset-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.preset-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.preset-btn-load {
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 140, 66, 0.3);
+}
+
+.preset-btn-load:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(255, 140, 66, 0.5);
+}
+
+.preset-btn-delete {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+.preset-btn-delete:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(231, 76, 60, 0.5);
+}
+
+.preset-empty {
+    text-align: center;
+    padding: 30px;
+    color: #999;
+    font-style: italic;
+}
+
 @media (max-width: 600px) {
     header h1 {
         font-size: 1.8rem;
@@ -375,6 +498,25 @@ small {
 
     .btn {
         width: 100%;
+    }
+
+    .preset-controls {
+        flex-direction: column;
+    }
+
+    .preset-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .preset-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .preset-btn {
+        flex: 1;
     }
 }
 

@@ -29,6 +29,11 @@ const randomizeBtn = document.getElementById('randomizeBtn');
 const resetBtn = document.getElementById('resetBtn');
 const downloadBtn = document.getElementById('downloadBtn');
 
+// Preset elements
+const presetNameInput = document.getElementById('presetName');
+const savePresetBtn = document.getElementById('savePresetBtn');
+const presetList = document.getElementById('presetList');
+
 // Initialize AudioContext
 function initAudioContext() {
     if (!audioContext) {
@@ -82,7 +87,7 @@ randomizeBtn.addEventListener('click', () => {
     const randomPitch = (Math.random() * 2.0 + 1.0).toFixed(1); // 1.0 to 3.0
     const randomSpeed = (Math.random() * 2.0 + 0.5).toFixed(1); // 0.5 to 2.5
     const randomChoppiness = (Math.random() * 0.14 + 0.01).toFixed(2); // 0.01 to 0.15
-    const randomPitchVar = (Math.random() * 0.5).toFixed(2); // 0.0 to 0.5
+    const randomPitchVar = (Math.random() * 1.0).toFixed(2); // 0.0 to 1.0
     
     pitchShiftInput.value = randomPitch;
     speedMultiplierInput.value = randomSpeed;
@@ -319,4 +324,175 @@ function audioBufferToWav(buffer) {
     
     return new Blob([arrayBuffer], { type: 'audio/wav' });
 }
+
+// ========== PRESET MANAGEMENT ==========
+
+// Load presets from localStorage
+function loadPresets() {
+    const presetsJSON = localStorage.getItem('npcVoicePresets');
+    return presetsJSON ? JSON.parse(presetsJSON) : [];
+}
+
+// Save presets to localStorage
+function savePresets(presets) {
+    localStorage.setItem('npcVoicePresets', JSON.stringify(presets));
+}
+
+// Get current settings
+function getCurrentSettings() {
+    return {
+        pitchShift: parseFloat(pitchShiftInput.value),
+        speed: parseFloat(speedMultiplierInput.value),
+        choppiness: parseFloat(choppinessInput.value),
+        pitchVariation: parseFloat(pitchVariationInput.value)
+    };
+}
+
+// Apply settings to controls
+function applySettings(settings) {
+    pitchShiftInput.value = settings.pitchShift;
+    speedMultiplierInput.value = settings.speed;
+    choppinessInput.value = settings.choppiness;
+    pitchVariationInput.value = settings.pitchVariation;
+    
+    pitchValueDisplay.textContent = settings.pitchShift;
+    speedValueDisplay.textContent = settings.speed;
+    choppinessValueDisplay.textContent = settings.choppiness;
+    pitchVariationValueDisplay.textContent = settings.pitchVariation;
+}
+
+// Render preset list
+function renderPresetList() {
+    const presets = loadPresets();
+    
+    if (presets.length === 0) {
+        presetList.innerHTML = '<div class="preset-empty">No saved presets yet. Adjust the settings above and save your first preset!</div>';
+        return;
+    }
+    
+    presetList.innerHTML = '';
+    
+    presets.forEach((preset, index) => {
+        const presetItem = document.createElement('div');
+        presetItem.className = 'preset-item';
+        
+        const presetInfo = document.createElement('div');
+        const presetName = document.createElement('div');
+        presetName.className = 'preset-name';
+        presetName.textContent = preset.name;
+        
+        const presetValues = document.createElement('div');
+        presetValues.className = 'preset-values';
+        presetValues.textContent = `Pitch: ${preset.settings.pitchShift} | Speed: ${preset.settings.speed} | Segment: ${preset.settings.choppiness} | Variation: ${preset.settings.pitchVariation}`;
+        
+        presetInfo.appendChild(presetName);
+        presetInfo.appendChild(presetValues);
+        
+        const actions = document.createElement('div');
+        actions.className = 'preset-actions';
+        
+        const loadBtn = document.createElement('button');
+        loadBtn.className = 'preset-btn preset-btn-load';
+        loadBtn.textContent = 'Load';
+        loadBtn.onclick = () => loadPreset(index);
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'preset-btn preset-btn-delete';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.onclick = () => deletePreset(index);
+        
+        actions.appendChild(loadBtn);
+        actions.appendChild(deleteBtn);
+        
+        presetItem.appendChild(presetInfo);
+        presetItem.appendChild(actions);
+        presetList.appendChild(presetItem);
+    });
+}
+
+// Save new preset
+function savePreset() {
+    const name = presetNameInput.value.trim();
+    
+    if (!name) {
+        alert('Please enter a preset name!');
+        return;
+    }
+    
+    const presets = loadPresets();
+    
+    // Check if preset name already exists
+    const existingIndex = presets.findIndex(p => p.name.toLowerCase() === name.toLowerCase());
+    
+    if (existingIndex !== -1) {
+        if (!confirm(`A preset named "${name}" already exists. Do you want to overwrite it?`)) {
+            return;
+        }
+        presets[existingIndex] = {
+            name: name,
+            settings: getCurrentSettings()
+        };
+    } else {
+        presets.push({
+            name: name,
+            settings: getCurrentSettings()
+        });
+    }
+    
+    savePresets(presets);
+    presetNameInput.value = '';
+    renderPresetList();
+    
+    // Visual feedback
+    const originalText = savePresetBtn.querySelector('span').textContent;
+    savePresetBtn.querySelector('span').textContent = 'Saved!';
+    savePresetBtn.style.background = 'linear-gradient(135deg, #27ae60 0%, #229954 100%)';
+    setTimeout(() => {
+        savePresetBtn.querySelector('span').textContent = originalText;
+        savePresetBtn.style.background = '';
+    }, 1500);
+}
+
+// Load preset
+function loadPreset(index) {
+    const presets = loadPresets();
+    if (presets[index]) {
+        applySettings(presets[index].settings);
+        
+        // Visual feedback - highlight the loaded preset briefly
+        const presetItems = document.querySelectorAll('.preset-item');
+        if (presetItems[index]) {
+            presetItems[index].style.borderColor = '#4caf50';
+            presetItems[index].style.boxShadow = '0 2px 15px rgba(76, 175, 80, 0.4)';
+            setTimeout(() => {
+                presetItems[index].style.borderColor = '';
+                presetItems[index].style.boxShadow = '';
+            }, 1000);
+        }
+    }
+}
+
+// Delete preset
+function deletePreset(index) {
+    const presets = loadPresets();
+    if (presets[index]) {
+        if (confirm(`Are you sure you want to delete "${presets[index].name}"?`)) {
+            presets.splice(index, 1);
+            savePresets(presets);
+            renderPresetList();
+        }
+    }
+}
+
+// Event listeners for presets
+savePresetBtn.addEventListener('click', savePreset);
+
+presetNameInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        savePreset();
+    }
+});
+
+// Initialize preset list on page load
+renderPresetList();
 
