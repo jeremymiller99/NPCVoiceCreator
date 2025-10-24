@@ -44,10 +44,10 @@ Transform your voice recordings into stylized NPC character speech!
 - **Clear Speech**: Use recordings with clear, distinct speech
 - **Minimal Background Noise**: Cleaner audio produces better results
 - **Experiment with Settings**: 
-  - Lower pitch (1.0-1.5) = deeper, more serious voices
-  - Higher pitch (2.0-3.0) = cute, playful voices
-  - Faster speed (2.0+) = makes speech unintelligible like NPC voice
-  - Slower speed (0.5-1.0) = more understandable but still stylized
+  - Lower pitch = deeper, more serious voices
+  - Higher pitch = cute, playful voices
+  - Faster speed = makes speech unintelligible like NPC voice
+  - Slower speed = more understandable but still stylized
   - Smaller segment length = more choppy/staccato effect
   - Higher pitch variation = more character personality
 
@@ -88,5 +88,6 @@ The processed segments are reconnected with small gaps between them, creating th
 - Larger audio files may take longer to process
 - Processing happens in your browser - no data is uploaded
 - All audio remains private on your device
+
 
 
