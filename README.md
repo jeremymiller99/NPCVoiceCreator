@@ -7,13 +7,12 @@ Transform your voice recordings into stylized NPC character speech!
 - **Easy File Upload**: Drag and drop or click to select audio files
 - **Real-time Preview**: Listen to your original audio before conversion
 - **Adjustable Parameters**: Fine-tune all settings
-  - **Pitch Shift**: From deep (1.0) to squeaky (3.0)
-  - **Speed**: Control speech rate (0.5 - 2.5)
-  - **Segment Length**: Chunk size (0.01 - 0.15s)
-  - **Pitch Variation**: Random pitch changes (0.0 - 0.5)
+  - **Pitch Shift**: From deep to squeaky
+  - **Speed**: Control speech rate
+  - **Segment Length**: Chunk size
+  - **Pitch Variation**: Random pitch changes
 - **Randomize Settings**: Generate random combinations
 - **Download**: Export as WAV file
-- **Professional UI**: Modern grey and orange design
 
 ## How to Use
 
@@ -90,9 +89,4 @@ The processed segments are reconnected with small gaps between them, creating th
 - Processing happens in your browser - no data is uploaded
 - All audio remains private on your device
 
-## Customization
-
-Feel free to modify the default parameters in the code:
-- Open `index.html` and adjust the `value` attributes on the range inputs
-- Open `styles.css` to customize colors and styling
 
